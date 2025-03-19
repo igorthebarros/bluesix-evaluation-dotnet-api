@@ -4,24 +4,26 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
 {
     public class Sale : BaseEntity
     {
-        public required uint SaleNumber { get; set; }
-        public required User Customer { get; set; }
-        public float PurchasePriceTotalAmount { get; private set; }
-        public string Branch { get; private set; } = string.Empty;
-        public required IEnumerable<SaleItem> ItemsPurchased { get; set; }
-        public uint ProductsTotalAmount { get; private set; }
-        public bool IsCanceled { get; private set; }
-
         public Sale()
         {
             IsCanceled = false;
         }
 
-        public void GetProductsTotalAmount()
+        public required Guid CustomerId { get; set; }
+        public float PriceTotalAmount { get; private set; }
+        public string Branch { get; private set; } = string.Empty;
+        public uint ProductsTotalAmount { get; private set; }
+        public bool IsCanceled { get; private set; }
+
+        // Not a navigation property. Used only for API purposes
+        public IEnumerable<SaleItem> ItemsPurchased { get; set; }
+
+        public void GetProductsTotalAmount(IEnumerable<SaleItem>? saleItems)
         {
-            TotalAmount = ItemsPurchased.Sum(x => x.Price);
+            if (saleItems == null)
+                PriceTotalAmount = ItemsPurchased.Sum(x => x.Price);
+            else
+                PriceTotalAmount = saleItems.Where(x => x.SaleId == Id).Sum(y => y.Price);
         }
-
     }
-
 }

@@ -16,14 +16,14 @@
         /// <param name="id">Entity Id on Guid format</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>The found entity</returns>
-        Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieve all entities
         /// </summary>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A list of entities</returns>
-        Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default);
+        Task<IReadOnlyList<T>?> GetAllAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a entity in the repository based on it's Guid Id

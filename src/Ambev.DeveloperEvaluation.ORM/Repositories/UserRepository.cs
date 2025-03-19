@@ -78,8 +78,15 @@ public class UserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public Task<User> UpdateAsync(User entity, CancellationToken cancellationToken = default)
+    public async Task<User> UpdateAsync(User entity, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var user = await GetByIdAsync(entity.Id, cancellationToken).ConfigureAwait(false);
+        if (user == null)
+            await _context.Users.AddAsync(entity, cancellationToken).ConfigureAwait(false);
+        else
+            _context.Users.Update(entity);
+
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        return entity;
     }
 }

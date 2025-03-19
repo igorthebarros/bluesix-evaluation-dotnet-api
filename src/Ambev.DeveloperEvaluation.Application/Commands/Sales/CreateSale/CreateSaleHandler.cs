@@ -11,7 +11,7 @@ namespace Ambev.DeveloperEvaluation.Application.Commands.Sales.CreateSale
     /// </summary>
     public class CreateSaleHandler : IRequestHandler<CreateSaleCommand,  CreateSaleResult>
     {
-        private readonly ISaleRepository _repository;
+        private readonly IBaseRespository<Sale> _repository;
         private readonly IMapper _mapper;
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Ambev.DeveloperEvaluation.Application.Commands.Sales.CreateSale
         /// <param name="repository">The sale repository</param>
         /// <param name="mapper">The AutoMapper instance</param>
         /// <param name="validator">The validator for CreateSaleCommand</param>
-        public CreateSaleHandler(ISaleRepository repository, IMapper mapper)
+        public CreateSaleHandler(IBaseRespository<Sale> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
