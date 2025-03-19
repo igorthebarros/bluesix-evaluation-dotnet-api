@@ -1,6 +1,6 @@
 using Ambev.DeveloperEvaluation.Domain.Enums;
 
-namespace Ambev.DeveloperEvaluation.Application.Users.GetUser;
+namespace Ambev.DeveloperEvaluation.Application.Commands.Users.GetUser;
 
 /// <summary>
 /// Response model for GetUser operation
@@ -25,7 +25,7 @@ public class GetUserResult
     /// <summary>
     /// The user's phone number
     /// </summary>
-    public string Phone { get; set; } = string.Empty;   
+    public string Phone { get; set; } = string.Empty;
 
     /// <summary>
     /// The user's role in the system

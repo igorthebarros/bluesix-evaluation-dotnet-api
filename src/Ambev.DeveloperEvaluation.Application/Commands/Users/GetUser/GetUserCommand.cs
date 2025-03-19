@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Ambev.DeveloperEvaluation.Application.Users.GetUser;
+namespace Ambev.DeveloperEvaluation.Application.Commands.Users.GetUser;
 
 /// <summary>
 /// Command for retrieving a user by their ID

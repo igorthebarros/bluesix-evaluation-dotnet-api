@@ -4,8 +4,9 @@ using FluentValidation;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
 using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.Common.Security;
+using Ambev.DeveloperEvaluation.Application.Users.CreateUser;
 
-namespace Ambev.DeveloperEvaluation.Application.Users.CreateUser;
+namespace Ambev.DeveloperEvaluation.Application.Commands.Users.CreateUser;
 
 /// <summary>
 /// Handler for processing CreateUserCommand requests

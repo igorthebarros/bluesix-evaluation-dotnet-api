@@ -1,4 +1,4 @@
-﻿namespace Ambev.DeveloperEvaluation.Application.Users.CreateUser;
+﻿namespace Ambev.DeveloperEvaluation.Application.Commands.Users.CreateUser;
 
 /// <summary>
 /// Represents the response returned after successfully creating a new user.

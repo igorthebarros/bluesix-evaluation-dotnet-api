@@ -2,8 +2,9 @@ using AutoMapper;
 using MediatR;
 using FluentValidation;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
+using Ambev.DeveloperEvaluation.Application.Users.GetUser;
 
-namespace Ambev.DeveloperEvaluation.Application.Users.GetUser;
+namespace Ambev.DeveloperEvaluation.Application.Commands.Users.GetUser;
 
 /// <summary>
 /// Handler for processing GetUserCommand requests

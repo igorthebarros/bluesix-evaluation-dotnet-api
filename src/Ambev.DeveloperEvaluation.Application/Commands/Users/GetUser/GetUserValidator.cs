@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Ambev.DeveloperEvaluation.Application.Users.GetUser;
+namespace Ambev.DeveloperEvaluation.Application.Commands.Users.GetUser;
 
 /// <summary>
 /// Validator for GetUserCommand

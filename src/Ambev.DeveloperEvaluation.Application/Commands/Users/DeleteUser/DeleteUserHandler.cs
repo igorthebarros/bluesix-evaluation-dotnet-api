@@ -1,8 +1,9 @@
 using MediatR;
 using FluentValidation;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
+using Ambev.DeveloperEvaluation.Application.Users.DeleteUser;
 
-namespace Ambev.DeveloperEvaluation.Application.Users.DeleteUser;
+namespace Ambev.DeveloperEvaluation.Application.Commands.Users.DeleteUser;
 
 /// <summary>
 /// Handler for processing DeleteUserCommand requests
