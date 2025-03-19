@@ -72,4 +72,14 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync(cancellationToken);
         return true;
     }
+
+    public Task<IEnumerable<User>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<User> UpdateAsync(User entity, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 }
