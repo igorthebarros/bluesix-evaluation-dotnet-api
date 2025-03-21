@@ -72,4 +72,21 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync(cancellationToken);
         return true;
     }
+
+    public Task<IReadOnlyList<User>?> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<User> UpdateAsync(User entity, CancellationToken cancellationToken = default)
+    {
+        var user = await GetByIdAsync(entity.Id, cancellationToken).ConfigureAwait(false);
+        if (user == null)
+            await _context.Users.AddAsync(entity, cancellationToken).ConfigureAwait(false);
+        else
+            _context.Users.Update(entity);
+
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        return entity;
+    }
 }
