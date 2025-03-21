@@ -4,6 +4,8 @@ namespace Ambev.DeveloperEvaluation.Domain.Services
 {
     public interface ISaleService : IBaseService<Sale>
     {
-        // Add here any function related only to the Sale entity
+        void CheckForDiscountBasedIdenticalItems(SaleItem item);
+        bool IsItemQuantityExceedingLimits(uint quantity);
+        SaleItem ApplyDiscountOnSaleItem(float amountOfDiscount, SaleItem item);
     }
 }

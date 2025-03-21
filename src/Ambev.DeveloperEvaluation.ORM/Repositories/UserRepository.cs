@@ -73,7 +73,7 @@ public class UserRepository : IUserRepository
         return true;
     }
 
-    public Task<IEnumerable<User>> GetAllAsync(CancellationToken cancellationToken = default)
+    public Task<IReadOnlyList<User>?> GetAllAsync(CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
