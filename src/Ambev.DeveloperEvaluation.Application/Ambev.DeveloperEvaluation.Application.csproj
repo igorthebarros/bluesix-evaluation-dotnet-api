@@ -15,10 +15,4 @@
     <PackageReference Include="OneOf" Version="3.0.271" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\Sales\DeleteSale\" />
-    <Folder Include="Commands\Sales\GetSale\" />
-    <Folder Include="Commands\Sales\UpdateSale\" />
-  </ItemGroup>
-
 </Project>
