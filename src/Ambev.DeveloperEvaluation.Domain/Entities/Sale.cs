@@ -10,10 +10,10 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         }
 
         public required Guid CustomerId { get; set; }
-        public float PriceTotalAmount { get; private set; }
-        public string Branch { get; private set; } = string.Empty;
-        public uint ProductsTotalAmount { get; private set; }
-        public bool IsCanceled { get; private set; }
+        public float PriceTotalAmount { get; set; }
+        public string Branch { get; set; } = string.Empty;
+        public uint ProductsTotalAmount { get; set; }
+        public bool IsCanceled { get; set; }
 
         // Not a navigation property. Used only for API purposes
         public IEnumerable<SaleItem> ItemsPurchased { get; set; }
