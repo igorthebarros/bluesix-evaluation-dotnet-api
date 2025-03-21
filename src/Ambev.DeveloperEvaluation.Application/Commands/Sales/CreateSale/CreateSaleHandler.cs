@@ -1,5 +1,5 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Entities;
-using Ambev.DeveloperEvaluation.Domain.Repositories;
+using Ambev.DeveloperEvaluation.Domain.Services;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
@@ -11,8 +11,8 @@ namespace Ambev.DeveloperEvaluation.Application.Commands.Sales.CreateSale
     /// </summary>
     public class CreateSaleHandler : IRequestHandler<CreateSaleCommand,  CreateSaleResult>
     {
-        private readonly IBaseRespository<Sale> _repository;
         private readonly IMapper _mapper;
+        private readonly ISaleService _service;
 
         /// <summary>
         /// Initializes a new instance of CreateUserHandler
@@ -20,10 +20,10 @@ namespace Ambev.DeveloperEvaluation.Application.Commands.Sales.CreateSale
         /// <param name="repository">The sale repository</param>
         /// <param name="mapper">The AutoMapper instance</param>
         /// <param name="validator">The validator for CreateSaleCommand</param>
-        public CreateSaleHandler(IBaseRespository<Sale> repository, IMapper mapper)
+        public CreateSaleHandler(IMapper mapper, ISaleService service)
         {
-            _repository = repository;
             _mapper = mapper;
+            _service = service;
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Ambev.DeveloperEvaluation.Application.Commands.Sales.CreateSale
         /// <returns>The created sale details</returns>
         public async Task<CreateSaleResult> Handle(CreateSaleCommand  command, CancellationToken cancellationToken)
         {
-            var validator = new CreateSaleCommandValidator();
+            var validator = new CreateSaleValidator();
             var validationResult = await validator.ValidateAsync(command, cancellationToken).ConfigureAwait(false);
 
             if (!validationResult.IsValid)
@@ -42,7 +42,7 @@ namespace Ambev.DeveloperEvaluation.Application.Commands.Sales.CreateSale
 
             var sale = _mapper.Map<Sale>(command);
 
-            var createdSale = await _repository.CreateAsync(sale, cancellationToken).ConfigureAwait(false);
+            var createdSale = await _service.CreateAsync(sale, cancellationToken).ConfigureAwait(false);
             var result = _mapper.Map<CreateSaleResult>(createdSale);
             return result;
         }
